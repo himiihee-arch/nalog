@@ -12,23 +12,27 @@
   <div id="sparkle-layer"></div>
 
   <main id="login-screen" class="login-screen">
-    <div class="logo">
-      <span class="logo-text">NA<span class="logo-colon">:</span>log</span>
+    <div class="logo-area">
+      <div class="logo">
+        <span class="logo-text">NA<span class="logo-colon">:</span>log</span>
+      </div>
     </div>
 
-    <form id="login-form" class="login-form" autocomplete="off">
-      <input
-        id="password-input"
-        class="password-input"
-        type="password"
-        placeholder="输入密码"
-        autocomplete="off"
-        autofocus
-      >
-      <button id="submit-btn" class="submit-btn" type="submit" aria-label="进入">→</button>
-    </form>
+    <div class="form-area">
+      <form id="login-form" class="login-form" autocomplete="off">
+        <input
+          id="password-input"
+          class="password-input"
+          type="password"
+          placeholder="输入密码"
+          autocomplete="off"
+          autofocus
+        >
+        <button id="submit-btn" class="submit-btn" type="submit" aria-label="进入">→</button>
+      </form>
 
-    <p id="login-error" class="login-error">密码不对，再想想？</p>
+      <p id="login-error" class="login-error">密码不对，再想想？</p>
+    </div>
   </main>
 
   <div id="unlock-flash" class="unlock-flash"></div>
