@@ -1,0 +1,42 @@
+.stub-frame {
+  position: relative;
+  z-index: 1;
+  max-width: 460px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  text-align: center;
+}
+
+.stub-title {
+  font-family: var(--font-pixel);
+  font-size: 20px;
+  color: var(--text-light);
+  letter-spacing: 1px;
+}
+
+.stub-note {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 280px;
+  line-height: 1.6;
+}
+
+.stub-back {
+  margin-top: 8px;
+  padding: 10px 20px;
+  border-radius: 14px;
+  border: 2px solid var(--ui-border);
+  background: var(--accent);
+  color: var(--text-light);
+  font-size: 13px;
+}
+
+.stub-back:hover {
+  background: var(--accent-dark);
+}

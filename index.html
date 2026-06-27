@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NA:log</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/login.css">
+</head>
+<body class="y2k-bg">
+
+  <div id="sparkle-layer"></div>
+
+  <main id="login-screen" class="login-screen">
+    <div class="logo">
+      <span class="logo-text">NA<span class="logo-colon">:</span>log</span>
+    </div>
+
+    <form id="login-form" class="login-form" autocomplete="off">
+      <input
+        id="password-input"
+        class="password-input"
+        type="password"
+        placeholder="输入密码"
+        autocomplete="off"
+        autofocus
+      >
+      <button id="submit-btn" class="submit-btn" type="submit" aria-label="进入">→</button>
+    </form>
+
+    <p id="login-error" class="login-error">密码不对，再想想？</p>
+  </main>
+
+  <div id="unlock-flash" class="unlock-flash"></div>
+
+  <script src="js/sparkle.js"></script>
+  <script src="js/crypto.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
