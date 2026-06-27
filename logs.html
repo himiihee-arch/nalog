@@ -5,18 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Logs · NA:log</title>
 <link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/stub.css">
+<link rel="stylesheet" href="css/logs.css">
 </head>
-<body class="y2k-bg">
-  <div id="sparkle-layer"></div>
-  <main class="stub-frame">
-    <span class="stub-title">Logs</span>
-    <p class="stub-note">聊天记录功能正在搭建中，会在 P2 里实现会话列表 + 气泡渲染。</p>
-    <a class="stub-back" href="desktop.html">← 返回桌面</a>
-  </main>
-  <script src="js/sparkle.js"></script>
+<body class="logs-page">
+
+  <div class="logs-shell">
+    <aside class="logs-sidebar">
+      <header class="sidebar-header">
+        <a class="sidebar-back" href="desktop.html">← 桌面</a>
+        <h1 class="sidebar-title">Logs</h1>
+      </header>
+      <ul class="window-list" id="window-list"></ul>
+    </aside>
+
+    <section class="logs-chat">
+      <header class="chat-topbar">
+        <button class="chat-back" id="chat-back-btn" aria-label="返回列表">←</button>
+        <span class="chat-title" id="chat-title">选一个窗口开始看吧</span>
+      </header>
+      <div class="chat-body" id="chat-body">
+        <p class="chat-empty">从左边选一个窗口开始看吧 ✦</p>
+      </div>
+    </section>
+  </div>
+
   <script src="js/crypto.js"></script>
   <script src="js/auth.js"></script>
-  <script src="js/desktop.js"></script>
+  <script src="js/logs.js"></script>
 </body>
 </html>

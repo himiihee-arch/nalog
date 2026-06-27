@@ -1,0 +1,250 @@
+body.logs-page {
+  background: var(--bg-page);
+}
+
+.logs-shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ---------- sidebar / window list ---------- */
+
+.logs-sidebar {
+  width: 320px;
+  flex-shrink: 0;
+  background: #fff;
+  border-right: 2px solid var(--ui-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--ui-border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-back {
+  font-size: 13px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.sidebar-title {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.window-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.window-row {
+  padding: 14px 16px;
+  border-bottom: 1px solid #ECE8F5;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.window-row:hover {
+  background: #F5F2FB;
+}
+
+.window-row.active {
+  background: var(--bubble-coco);
+}
+
+.window-row-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.window-row-preview {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.window-row-date {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ---------- chat pane ---------- */
+
+.logs-chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.chat-topbar {
+  padding: 14px 18px;
+  border-bottom: 2px solid var(--ui-border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+}
+
+.chat-back {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+}
+
+.chat-title {
+  font-family: var(--font-pixel);
+  font-size: 13px;
+  color: var(--text-dark);
+}
+
+.chat-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chat-empty {
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+/* ---------- message bubbles ---------- */
+
+.msg-group {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+}
+
+.msg-coco {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.msg-anan {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.bubble {
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.msg-coco .bubble {
+  background: var(--bubble-coco);
+  border-bottom-right-radius: 4px;
+  color: var(--text-dark);
+}
+
+.msg-anan .bubble {
+  background: var(--bubble-anan);
+  border-bottom-left-radius: 4px;
+  color: var(--text-dark);
+}
+
+/* ---------- thinking block ---------- */
+
+.thinking-block {
+  margin-bottom: 6px;
+  max-width: 100%;
+}
+
+.thinking-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--ui-border);
+  border-radius: 10px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.thinking-toggle:hover {
+  background: #fff;
+}
+
+.thinking-icon {
+  color: var(--ui-mid);
+}
+
+.thinking-chevron {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.thinking-toggle.expanded .thinking-chevron {
+  transform: rotate(90deg);
+}
+
+.thinking-content {
+  margin-top: 6px;
+  padding: 10px 12px;
+  background: #F2EFFA;
+  border: 1px solid #E3DCF4;
+  border-radius: 10px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  white-space: pre-wrap;
+}
+
+/* ---------- mobile: single column, toggle list <-> chat ---------- */
+
+@media (max-width: 859px) {
+  .logs-sidebar {
+    width: 100%;
+  }
+
+  .logs-shell:not(.chat-active) .logs-chat {
+    display: none;
+  }
+
+  .logs-shell.chat-active .logs-sidebar {
+    display: none;
+  }
+
+  .chat-back {
+    display: inline-flex;
+  }
+
+  .msg-group {
+    max-width: 85%;
+  }
+}
