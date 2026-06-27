@@ -36,6 +36,11 @@
   box-sizing: border-box;
 }
 
+/* author display:flex/grid rules otherwise beat the UA [hidden]{display:none} rule */
+[hidden] {
+  display: none !important;
+}
+
 html, body {
   margin: 0;
   padding: 0;

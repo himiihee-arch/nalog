@@ -22,11 +22,42 @@
       <header class="chat-topbar">
         <button class="chat-back" id="chat-back-btn" aria-label="返回列表">←</button>
         <span class="chat-title" id="chat-title">选一个窗口开始看吧</span>
+        <div class="topbar-spacer"></div>
+        <div class="topbar-menu-wrap">
+          <button class="topbar-menu-btn" id="menu-btn" aria-label="更多" hidden>⋯</button>
+          <div class="topbar-menu" id="topbar-menu" hidden>
+            <button class="topbar-menu-item" id="menu-search-btn" type="button">搜索本窗口内容</button>
+            <button class="topbar-menu-item" id="menu-wallpaper-btn" type="button">设置聊天壁纸</button>
+          </div>
+        </div>
       </header>
+
+      <div class="search-bar" id="search-bar" hidden>
+        <input type="text" id="search-input" class="search-input" placeholder="搜索本窗口内容" autocomplete="off">
+        <span class="search-counter" id="search-counter"></span>
+        <button class="search-nav" id="search-prev" type="button" aria-label="上一处">↑</button>
+        <button class="search-nav" id="search-next" type="button" aria-label="下一处">↓</button>
+        <button class="search-close" id="search-close" type="button" aria-label="关闭搜索">×</button>
+      </div>
+
       <div class="chat-body" id="chat-body">
         <p class="chat-empty">从左边选一个窗口开始看吧 ✦</p>
       </div>
     </section>
+  </div>
+
+  <div class="wallpaper-modal" id="wallpaper-modal" hidden>
+    <div class="wallpaper-panel">
+      <div class="wallpaper-panel-header">
+        <span>选一张聊天壁纸</span>
+        <button class="wallpaper-close" id="wallpaper-close" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="wallpaper-presets" id="wallpaper-presets"></div>
+      <label class="wallpaper-upload">
+        上传自定义图片
+        <input type="file" id="wallpaper-upload-input" accept="image/*" hidden>
+      </label>
+    </div>
   </div>
 
   <script src="js/crypto.js"></script>
