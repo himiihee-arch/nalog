@@ -89,10 +89,58 @@ function renderChat(win) {
     const bubble = document.createElement('div');
     bubble.className = 'bubble';
     bubble.textContent = m.text;
-    group.appendChild(bubble);
 
+    const star = buildStarButton(m.id);
+
+    const row = document.createElement('div');
+    row.className = 'bubble-row';
+    if (m.sender === 'coco') row.append(star, bubble);
+    else row.append(bubble, star);
+    group.appendChild(row);
+
+    wireLongPress(group);
     body.appendChild(group);
   });
+}
+
+function buildStarButton(messageId) {
+  const star = document.createElement('button');
+  star.type = 'button';
+  star.className = 'msg-star';
+  star.setAttribute('aria-label', '收藏');
+  const bookmarked = nalogIsBookmarked(messageId);
+  star.textContent = bookmarked ? '★' : '☆';
+  star.classList.toggle('bookmarked', bookmarked);
+
+  star.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const now = nalogToggleBookmark(messageId);
+    star.textContent = now ? '★' : '☆';
+    star.classList.toggle('bookmarked', now);
+  });
+
+  return star;
+}
+
+let nalogLongPressDocListenerAdded = false;
+
+function wireLongPress(group) {
+  let timer = null;
+
+  group.addEventListener('touchstart', () => {
+    timer = setTimeout(() => group.classList.add('show-actions'), 450);
+  });
+  group.addEventListener('touchend', () => clearTimeout(timer));
+  group.addEventListener('touchmove', () => clearTimeout(timer));
+
+  if (!nalogLongPressDocListenerAdded) {
+    nalogLongPressDocListenerAdded = true;
+    document.addEventListener('touchstart', (e) => {
+      document.querySelectorAll('.msg-group.show-actions').forEach((g) => {
+        if (!g.contains(e.target)) g.classList.remove('show-actions');
+      });
+    });
+  }
 }
 
 function buildThinkingBlock(thinkingText) {

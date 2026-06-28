@@ -348,6 +348,40 @@ body.logs-page {
   align-items: flex-start;
 }
 
+.bubble-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.msg-star {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  line-height: 1;
+  color: var(--ui-mid);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.msg-group:hover .msg-star,
+.msg-group.show-actions .msg-star,
+.msg-star.bookmarked {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.msg-star.bookmarked {
+  color: #E8B339;
+}
+
+.msg-star:hover {
+  transform: scale(1.15);
+}
+
 .bubble {
   padding: 10px 14px;
   border-radius: 16px;

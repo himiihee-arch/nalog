@@ -5,18 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Likes · NA:log</title>
 <link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/stub.css">
+<link rel="stylesheet" href="css/logs.css">
+<link rel="stylesheet" href="css/likes.css">
 </head>
-<body class="y2k-bg">
-  <div id="sparkle-layer"></div>
-  <main class="stub-frame">
-    <span class="stub-title">Likes</span>
-    <p class="stub-note">收藏夹功能正在搭建中，会在 P4 里实现收藏入口 + 卡片页 + 气泡详情页。</p>
-    <a class="stub-back" href="desktop.html">← 返回桌面</a>
-  </main>
-  <script src="js/sparkle.js"></script>
+<body class="likes-page">
+
+  <section class="likes-grid-view" id="likes-grid-view">
+    <header class="likes-header">
+      <a class="likes-back" href="desktop.html">← 桌面</a>
+      <h1 class="likes-title">Likes</h1>
+    </header>
+
+    <div class="tag-bar" id="tag-bar"></div>
+
+    <div class="likes-grid" id="likes-grid"></div>
+    <p class="likes-empty" id="likes-empty" hidden>还没有收藏，去 Logs 里点亮一些气泡吧 ✦</p>
+  </section>
+
+  <section class="like-detail-view" id="like-detail-view" hidden>
+    <header class="detail-topbar">
+      <button class="detail-back" id="detail-back-btn" type="button" aria-label="返回">←</button>
+      <span class="detail-title" id="detail-title"></span>
+    </header>
+
+    <div class="detail-body" id="detail-body"></div>
+
+    <div class="detail-tags-editor">
+      <div class="detail-tags-list" id="detail-tags-list"></div>
+      <form class="detail-tag-form" id="detail-tag-form" autocomplete="off">
+        <input type="text" id="detail-tag-input" placeholder="加个标签" maxlength="12">
+        <button type="submit">添加</button>
+      </form>
+      <button class="detail-unbookmark" id="detail-unbookmark-btn" type="button">取消收藏</button>
+    </div>
+  </section>
+
   <script src="js/crypto.js"></script>
   <script src="js/auth.js"></script>
-  <script src="js/desktop.js"></script>
+  <script src="js/bookmarks.js"></script>
+  <script src="js/likes.js"></script>
 </body>
 </html>
