@@ -14,7 +14,7 @@ const WALLPAPER_PRESETS = [
 document.addEventListener('DOMContentLoaded', async () => {
   nalogRequireAuth();
 
-  const data = await nalogLoadData('nalog_data.json');
+  const [data] = await Promise.all([nalogLoadData('nalog_data.json'), nalogInitBookmarks()]);
   nalogWindows = data.windows;
   renderWindowList();
   applyStoredWallpaper();
@@ -23,10 +23,23 @@ document.addEventListener('DOMContentLoaded', async () => {
   wireSearch();
   wireWallpaperModal();
 
+  nalogOnBookmarksChange(refreshStarStates);
+
   document.getElementById('chat-back-btn').addEventListener('click', () => {
     document.querySelector('.logs-shell').classList.remove('chat-active');
   });
 });
+
+// Re-syncs star fill state after a remote bookmark change (another device/tab),
+// without rebuilding the whole chat (would lose scroll position / search state).
+function refreshStarStates() {
+  if (!activeWindow) return;
+  document.querySelectorAll('#chat-body .msg-star').forEach((star, i) => {
+    const bookmarked = nalogIsBookmarked(activeWindow.messages[i].id);
+    star.textContent = bookmarked ? '★' : '☆';
+    star.classList.toggle('bookmarked', bookmarked);
+  });
+}
 
 function renderWindowList() {
   const list = document.getElementById('window-list');

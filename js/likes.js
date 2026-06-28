@@ -5,10 +5,14 @@ let activeEntry = null;
 document.addEventListener('DOMContentLoaded', async () => {
   nalogRequireAuth();
 
-  const data = await nalogLoadData('nalog_data.json');
+  const [data] = await Promise.all([nalogLoadData('nalog_data.json'), nalogInitBookmarks()]);
   nalogAllWindows = data.windows;
 
   renderGridView();
+
+  nalogOnBookmarksChange(() => {
+    if (!activeEntry) renderGridView();
+  });
 
   document.getElementById('detail-back-btn').addEventListener('click', () => {
     showGridView();
